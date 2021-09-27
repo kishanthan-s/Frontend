@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { BookingDetail } from '../shared/booking-detail.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProfileService {
 
-  readonly baseUrl='https://localhost:5001/api/booking/1';
+  readonly baseUrl='https://localhost:5001/api/booking/9';
   constructor(private http: HttpClient) { }
 
 
@@ -18,10 +19,14 @@ export class ProfileService {
 
  // }
 
- getBooks()
- {
-   return this.http.get(this.baseUrl);
- }
+ //getBooks()
+//{
+//   return this.http.get(this.baseUrl);
+// }
+
+ getAll(): Observable<BookingDetail[]> {
+ return this.http.get<BookingDetail[]>(this.baseUrl);
+}
 }
 
 

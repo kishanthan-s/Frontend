@@ -3,6 +3,7 @@ import { BookingDetailService } from '../shared/booking-detail.service';
 import { HttpClientModule, HttpClient } from '@angular/common/http'; 
 import { ProfileService } from '../shared/profile.service';
 import { profile } from '../shared/profile';
+import { BookingDetail } from '../shared/booking-detail.model';
 
 
 @Component({
@@ -15,7 +16,8 @@ export class ProfileComponent implements OnInit {
   constructor(private _profileservice: ProfileService ) { }
  
  // Bookprofile: profile[];
- books: any = []; 
+books: any = []; 
+ Book?: BookingDetail[];
   ngOnInit() {
 
 
@@ -28,16 +30,30 @@ export class ProfileComponent implements OnInit {
    //   }
    // );
 
-   this.getBookDetails();
+ //  this.getBookDetails();
+ this.retrieveBook();
     
   }
 
-  getBookDetails() {
-    this._profileservice.getBooks().subscribe(books => {
-      console.log("retrived sucessfully");
-    });
+  //retrieveBook() {
+  //  this._profileservice.getBooks().subscribe(books => {
+   //   console.log("retrived sucessfully");
+   // });
   
-  }
+  //}
+
+ retrieveBook(): void {
+  this._profileservice.getAll()
+   .subscribe(
+     data => {
+        this.books = data;
+        console.log(data);
+        console.log("retrived sucessfully");
+     },
+     error => {
+       console.log(error);
+     });
+}
   
 
 }
