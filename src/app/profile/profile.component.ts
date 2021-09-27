@@ -14,25 +14,30 @@ export class ProfileComponent implements OnInit {
 
   constructor(private _profileservice: ProfileService ) { }
  
-  Bookprofile: profile[];
-  ngOnInit(): void {
+ // Bookprofile: profile[];
+ books: any = []; 
+  ngOnInit() {
 
 
-    this._profileservice.getcommentbyparameter()
-    .subscribe
-    (
-      data=>
-      {
-        this.Bookprofile=data;
-      }
-    );
-    
+  //  this._profileservice.getcommentbyparameter()
+  //  .subscribe
+  //  (
+ //     data=>
+   //   {
+  //      this.Bookprofile=data;
+   //   }
+   // );
+
+   this.getBookDetails();
     
   }
 
+  getBookDetails() {
+    this._profileservice.getBooks().subscribe(books => {
+      console.log("retrived sucessfully");
+    });
   
-  
-
+  }
   
 
 }
