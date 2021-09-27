@@ -1,0 +1,52 @@
+
+<head></head>
+<body>
+    <div class="bg">
+        <div style="padding-top: 50px; padding-left: 550px;">
+        <div >
+            <button type="button" class="btn btn-primary">Click here to edit the Registration form</button>
+        </div>
+    </div>
+  
+
+    <div>
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Email</th>
+                    <th>Address</th>
+                    <th>City</th>
+                    <th>Provience</th>
+                    <th>Zip</th>
+                    <th>Mobitel number</th>
+                    <th>Image</th>
+                    <th>Room type</th>
+                    <th>Smoking room</th>
+                    <th>Pocket WIFI</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+               <tr *ngFor="let BD of Bookprofile">
+                    <td>{{BD.FirstName}}</td>
+                    <td>{{BD.LastName}}</td>
+                    <td>{{BD.Email}}</td>
+                    <td>{{BD.StreetAddress}}</td>
+                    <td>{{BD.City}}</td>
+                    <td>{{BD.Provience}}</td>
+                    <td>{{BD.ZipCode}}</td>
+                    <td>{{BD.Phone_Number}}</td>
+                    <td>{{BD.PhotoFileName}}</td>>
+                    <td>{{BD.RoomType}}</td>>
+                    <td>{{BD.SmokingRoom}}</td>>
+                    <td> Edit</td>
+                   
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
