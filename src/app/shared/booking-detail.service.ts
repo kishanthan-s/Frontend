@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BookingDetail } from './booking-detail.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class BookingDetailService {
     return this.http.post(this.baseUrl,this.formData);
   }
 
+  
+
+
  
+
 
 }

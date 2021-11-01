@@ -1,17 +1,17 @@
 export class BookingDetail {
-    BookingId: number=0;
-    FirstName: string='';
-    LastName: string='';
-    Email: string='';
-    StreetAddress: string='';
-    City: string='';
-    Provience: string='';  
-    ZipCode: string='';
-    Phone_Number: string='';
-    PhotoFileName: string='';
-    RoomType: string='';
-    SmokingRoom: string='';
-    LeasePocketWIFI: string='';
+    public BookingId: number=0;
+    public FirstName: string='';
+    public LastName: string='';
+    public Email: string='';
+    public StreetAddress: string='';
+    public City: string='';
+    public Provience: string='';  
+    public ZipCode: string='';
+    public Phone_Number: string='';
+    public PhotoFileName: string='';
+    public RoomType: string='';
+    public SmokingRoom: string='';
+    public LeasePocketWIFI: string='';
     
 
 

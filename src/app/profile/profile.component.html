@@ -2,17 +2,14 @@
 <head></head>
 <body>
     <div class="bg">
-        <div style="padding-top: 50px; padding-left: 550px;">
-        <div >
-            <button type="button" class="btn btn-primary">Click here to edit the Registration form</button>
-        </div>
-    </div>
+       <a routerLink="/add/0" class=" btn btn-primary  mb-3">Book Now</a>
   
-
-    <div>
-        <table class="table">
+<!--adding new button to book-->
+    
+        <table class="table" >
             <thead class="thead-light">
                 <tr>
+                    <th>BookingId</th>
                     <th>FirstName</th>
                     <th>LastName</th>
                     <th>Email</th>
@@ -25,28 +22,35 @@
                     <th>Room type</th>
                     <th>Smoking room</th>
                     <th>Pocket WIFI</th>
+                    <th></th>
                     
                     
                 </tr>
             </thead>
             <tbody>
-             <tr *ngFor="let BD of Book">
-                    <td>{{BD.FirstName}}</td>
-                    <td>{{BD.LastName}}</td>
-                    <td>{{BD.Email}}</td>
-                    <td>{{BD.StreetAddress}}</td>
-                    <td>{{BD.City}}</td>
-                    <td>{{BD.Provience}}</td>
-                    <td>{{BD.ZipCode}}</td>
-                    <td>{{BD.Phone_Number}}</td>
-                    <td>{{BD.PhotoFileName}}</td>>
-                    <td>{{BD.RoomType}}</td>>
-                    <td>{{BD.SmokingRoom}}</td>>
-                    <td> Edit</td>
+            <tr *ngIf ="books">
+                    <td>{{books.bookingId}}</td>
+                    <td>{{books.firstName}}</td>
+                   <td>{{books.lastName}}</td>
+                    <td>{{books.email}}</td>
+                    <td>{{books.streetAddress}}</td>
+                    <td>{{books.city}}</td>
+                    <td>{{books.provience}}</td>
+                    <td>{{books.zipCode}}</td>
+                    <td>{{books.phone_Number}}</td>
+                    <td>{{books.photoFileName}}</td>>
+                    <td>{{books.roomType}}</td>>
+                    <td>{{books.smokingRoom}}</td>>
+                   <td ><a [routerLink]="['/Edit',books.bookingId]">Edit</a></td>   <!--both buttons are implemented-->
+                  <!--    <td ><a routerLink="/Edit/{{books.BookingId}}">Edit</a></td>--><!--new buttons for edit-->
+                    <td><button type="submit" class="btn btn-primary" (click)="onDelete(books.BookingId)">X</button></td>
                    
                 </tr>
             </tbody>
         </table>
-    </div>
+    
+
+
+
 </div>
 </body>

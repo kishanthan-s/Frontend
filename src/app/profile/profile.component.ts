@@ -1,59 +1,67 @@
 import { Component, OnInit } from '@angular/core';
 import { BookingDetailService } from '../shared/booking-detail.service';
-import { HttpClientModule, HttpClient } from '@angular/common/http'; 
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { ProfileService } from '../shared/profile.service';
-import { profile } from '../shared/profile';
 import { BookingDetail } from '../shared/booking-detail.model';
+import { SignupDetail } from '../shared/signup-detail.model';
+import { Observable } from 'rxjs';
+import { BookingComponent } from '../booking/booking.component';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
+ 
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private _profileservice: ProfileService ) { }
- 
- // Bookprofile: profile[];
-books: any = []; 
- Book?: BookingDetail[];
-  ngOnInit() {
+  constructor(private profileservice: ProfileService, private router: Router) { }
+
+  books: any = [];
+  Book?: BookingDetail[];
+  ngOnInit(): void {
 
 
-  //  this._profileservice.getcommentbyparameter()
-  //  .subscribe
-  //  (
- //     data=>
-   //   {
-  //      this.Bookprofile=data;
-   //   }
-   // );
-
- //  this.getBookDetails();
- this.retrieveBook();
     
+
+    this.retrieveBook();
+   
+
+  }
+  retrieveBook() {
+    this.profileservice.getAll()
+      .subscribe(
+        data => {
+          //should filter using emial
+          //  if(data[0].Email)
+          // {
+          //    console.log(data[0].Email);
+          // }
+          this.books = data;
+          console.log(data);
+          console.log(this.books);
+          console.log("retrived sucessfully");
+        },
+        error => {
+          console.log(error);
+        });
   }
 
-  //retrieveBook() {
-  //  this._profileservice.getBooks().subscribe(books => {
-   //   console.log("retrived sucessfully");
-   // });
-  
-  //}
+ 
+  onDelete(BookingId: number) {
+    var isDelete = confirm("Do you want to delete Staff with Id: " + BookingId);
+    if (isDelete) {
+      this.profileservice.onDelete(BookingId).subscribe((data) => {
 
- retrieveBook(): void {
-  this._profileservice.getAll()
-   .subscribe(
-     data => {
-        this.books = data;
-        console.log(data);
-        console.log("retrived sucessfully");
-     },
-     error => {
-       console.log(error);
-     });
-}
+      }, error => { console.error(error); });
+    }
+  }
+
   
+
+ 
+
 
 }

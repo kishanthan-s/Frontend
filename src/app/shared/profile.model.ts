@@ -1,4 +1,4 @@
-export class profile
+export class Profile
 {
     BookingId: number;
     FirstName: string;

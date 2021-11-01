@@ -16,6 +16,16 @@ import { BookingInfoComponent } from './booking-info/booking-info.component';
 import { FormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { AuthGuard } from './guards/auth.guard';
+import { JwtModule } from '@auth0/angular-jwt';
+import { RouterModule } from '@angular/router';
+import { DatePipe } from '@angular/common';
+
+export function tokenGetter() {
+  return localStorage.getItem("jwt");
+}
+
+
 
 @NgModule({
   declarations: [
@@ -35,10 +45,20 @@ import { ToastrModule } from 'ngx-toastr';
     MatButtonModule,
     FormsModule,
     HttpClientModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ["localhost:5000"],
+        blacklistedRoutes: []
+      }
+    })
+   
+
     
   ],
-  providers: [],
+  
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

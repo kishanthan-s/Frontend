@@ -6,8 +6,16 @@
     <a mat-button routerLink="Profile" >Profile</a>
     <a mat-button routerLink="SignUp">SignUp</a>
     <a mat-button routerLink="Booking">Booking</a>
-  </mat-toolbar>
-
     
+    
+   <a mat-button *ngIf="this.Invalidlogins" routerLink="Home" (click)="logOut()">Logout</a>
+    
+  </mat-toolbar>
+  <div class="bg">
+    <div *ngIf="this.Invalidlogins">
+ Welcome back, friend.
+</div>
 
+
+ 
 
